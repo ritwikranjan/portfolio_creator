@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-      <title>Ritwik Ranjan</title>
+      <title>{{ name }}</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,7 +32,7 @@
     <header class="d-print-none">
       <div class="container text-center text-lg-left">
         <div class="pt-4 clearfix">
-          <h1 class="site-title mb-0">Ritwik Ranjan</h1>
+          <h1 class="site-title mb-0">{{ name }}</h1>
           <div class="site-nav"> 
             <nav role="navigation">
               <ul class="nav justify-content-center">
@@ -67,7 +67,7 @@
             <div class="avatar p-1"><img class="img-thumbnail shadow-2-strong" src="{% static 'myportfolio/images/avatar.jpg' %}" width="160" height="160" alt=""/></div>
             <div class="header-bio mt-3">
               <div data-aos="zoom-in" data-aos-delay="0">
-                <h2 class="h1">Ritwik Ranjan</h2>
+                <h2 class="h1">{{ name }}</h2>
                 <p>Software Developer</p>
               </div>
               <div class="header-social mb-3 d-print-none" data-aos="zoom-in" data-aos-delay="200">
@@ -96,8 +96,8 @@
       <div class="row">
         <div class="col-md-6">
           <h2 class="h2 fw-light mb-4">About Me</h2>
-          <p>Hello! I’m Ritwik Ranjan. I am passionate about UI/UX design and Web Design. I am a skilled <strong>front-end developer</strong> and master of graphic design tools such as Photoshop and Sketch. I am a quick learner and a team worker that gets the job done.</p>
-          <p>I can easily capitalize on low hanging fruits and quickly maximize timely deliverables for real-time schemas.</p>
+            <p>Energetic and team player <b>Software Developer</b> with a positive result-oriented work ethic, outstanding time management, and proficient coding skills.</p>
+            <p>Looking forward to bringing my remarkable expertise on board to contribute through my robust performance.</p>
         </div>
         <div class="col-md-5 offset-lg-1">
           <div class="row mt-2">
@@ -112,13 +112,19 @@
               <div class="pb-2 fw-bolder"><i class="far fa-envelope pe-2 text-muted" style="width:24px;opacity:0.85;"></i> Email</div>
             </div>
             <div class="col-sm-7">
-              <div class="pb-2">Ritwik@company.com</div>
+              <div class="pb-2"><a href="mailto:{{ email }}"></a></div>
             </div>
             <div class="col-sm-5">
-              <div class="pb-2 fw-bolder"><i class="fab fa-skype pe-2 text-muted" style="width:24px;opacity:0.85;"></i> Skype</div>
+              <div class="pb-2 fw-bolder"><i class="fab fa-skype pe-2 text-muted" style="width:24px;opacity:0.85;"></i> LinkedIn</div>
             </div>
             <div class="col-sm-7">
-              <div class="pb-2">username@skype.com</div>
+              <div class="pb-2"><a href="https://{{ linkedin }}">linkedin.com/in/ranjanritwik</a></div>
+            </div>
+              <div class="col-sm-5">
+              <div class="pb-2 fw-bolder"><i class="fab fa-skype pe-2 text-muted" style="width:24px;opacity:0.85;"></i> Github</div>
+            </div>
+            <div class="col-sm-7">
+              <div class="pb-2"><a href="https://{{ github }}">github.com/ritwikranjan</a></div>
             </div>
             <div class="col-sm-5">
               <div class="pb-2 fw-bolder"><i class="fas fa-phone pe-2 text-muted" style="width:24px;opacity:0.85;"></i> Phone</div>
@@ -358,7 +364,7 @@
     <footer class="pt-4 pb-4 text-muted text-center d-print-none">
       <div class="container">
         <div class="my-3">
-          <div class="h4">Ritwik Ranjan</div>
+          <div class="h4">{{ name }}</div>
           <div class="footer-nav">
             <nav role="navigation">
               <ul class="nav justify-content-center">
