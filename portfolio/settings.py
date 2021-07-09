@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'test_db',
+        'NAME': 'db',
         'USER': 'db',
         'PASSWORD': 'c3o8y5892hnceaji',
         'HOST': 'app-048e68bc-080b-4d8a-8f13-60247ed216fd-do-user-6747397-0.b.db.ondigitalocean.com',
