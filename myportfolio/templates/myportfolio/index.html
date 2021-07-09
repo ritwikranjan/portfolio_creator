@@ -13,6 +13,7 @@
     <noscript>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Roboto:wght@300;400;500;700&amp;display=swap"/>
     </noscript>
+
       {% load static %}
 
     <link href="{%  static 'myportfolio/css/font-awesome/css/all.min.css' %}" rel="stylesheet">
@@ -106,7 +107,7 @@
               <div class="pb-2 fw-bolder"><i class="far fa-calendar-alt pe-2 text-muted" style="width:24px;opacity:0.85;"></i> Age</div>
             </div>
             <div class="col-sm-7">
-              <div class="pb-2">28</div>
+              <div class="pb-2">{{ age }}</div>
             </div>
             <div class="col-sm-5">
               <div class="pb-2 fw-bolder"><i class="far fa-envelope pe-2 text-muted" style="width:24px;opacity:0.85;"></i> Email</div>
@@ -118,7 +119,7 @@
               <div class="pb-2 fw-bolder"><i class="fab fa-skype pe-2 text-muted" style="width:24px;opacity:0.85;"></i> LinkedIn</div>
             </div>
             <div class="col-sm-7">
-              <div class="pb-2"><a href="https://{{ linkedin }}">linkedin.com/in/ranjanritwik</a></div>
+              <div class="pb-2"><a href="https://{{ linkedin }}">{{ linkedin }}</a></div>
             </div>
               <div class="col-sm-5">
               <div class="pb-2 fw-bolder"><i class="fab fa-skype pe-2 text-muted" style="width:24px;opacity:0.85;"></i> Github</div>
