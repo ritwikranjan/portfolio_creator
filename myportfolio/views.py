@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from datetime import date
-
+from .models import PersonalDetail
 
 # Create your views here.
 def calculate_age(birth_date):
@@ -11,12 +11,13 @@ def calculate_age(birth_date):
 
 
 def home_view(request):
+    personal_details = PersonalDetail.objects.first()
     return render(request, 'myportfolio/index.html', {
-        'name': 'Ritwik Ranjan',
-        'age': calculate_age(date(2000, 6, 26)),
-        'email': 'ritwikranjan99@gmail.com',
-        'linkedin': 'linkedin.com/in/ranjanritwik',
-        'github': 'github.com/ritwikranjan'
+        'name': personal_details.name,
+        'age': calculate_age(personal_details.dob),
+        'email': personal_details.email,
+        'linkedin': personal_details.linkedin,
+        'github': personal_details.github
     })
 
 
