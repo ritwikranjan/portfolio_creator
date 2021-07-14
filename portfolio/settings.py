@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,7 +39,30 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myportfolio',
+    'storages'
 ]
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'myportfolio/static'),
+]
+
+AWS_ACCESS_KEY_ID = 'AKIAXZ6ACCEH2WC2HAPC'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'portfolio-ritwik'
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+
+AWS_LOCATION = 'static'
+
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+DEFAULT_FILE_STORAGE = 'myportfolio.storage_backend.MediaStorage'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -86,7 +110,7 @@ DATABASES = {
     }
 }
 
-CSRF_COOKIE_SECURE=True
+CSRF_COOKIE_SECURE = True
 
 
 # Password validation
@@ -121,11 +145,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
-
-STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
