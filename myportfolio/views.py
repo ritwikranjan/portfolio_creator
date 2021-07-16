@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
 from datetime import date
-from .models import Skill, PersonalDetail, WorkExperience, Project, Reference, Education
-from django.core.mail import send_mail
+
+from django.shortcuts import render
+
+from .models import Skill, WorkExperience, Project, Reference, Education
 from .redirect_views import *
 
 
@@ -13,13 +14,13 @@ def calculate_age(birth_date):
     return age
 
 
-def home_view(request):
-    personal_details = PersonalDetail.objects.first()
-    skills = Skill.objects.all()
-    work_experiences = WorkExperience.objects.all()
-    educations = Education.objects.all()
-    projects = Project.objects.all()
-    references = Reference.objects.all()
+def home_view(request, slug):
+    personal_details = PersonalDetail.objects.get(slug=slug)
+    skills = Skill.objects.filter(user=personal_details).all()
+    work_experiences = WorkExperience.objects.filter(user=personal_details).all()
+    educations = Education.objects.filter(user=personal_details).all()
+    projects = Project.objects.filter(user=personal_details).all()
+    references = Reference.objects.filter(user=personal_details).all()
     return render(request, 'myportfolio/index.html', {
         'personal_details': personal_details,
         'age': calculate_age(personal_details.dob),
@@ -31,10 +32,12 @@ def home_view(request):
     })
 
 
-def contact(request):
+
+
+def contact(request, slug):
     name = request.POST.get('name')
     email = request.POST.get('email')
     msg = request.POST.get('msg')
     # send_mail(f'Reached from Portfolio: {name}', msg, email, ['ritwikr@ieee.org'])
-    return redirect('home')
+    return redirect('home', slug)
 

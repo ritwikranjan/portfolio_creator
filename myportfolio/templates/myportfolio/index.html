@@ -2,7 +2,7 @@
 <html lang="en-US">
 
   <head>
-    <title>{{ name }}</title>
+    <title>{{ personal_details.name }}</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -160,7 +160,7 @@
                           <div class="mb-3">
                               <span class="fw-bolder">{{ skill.name }}</span>
                               <div class="progress my-2 rounded" style="height: 20px">
-                                <div class="progress-bar bg-info" role="progressbar" data-aos="zoom-in-right" data-aos-delay="100" data-aos-anchor=".skills-section" style="width: 95%;" aria-valuenow="{{ skill.level }}" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar bg-info" role="progressbar" data-aos="zoom-in-right" data-aos-delay="100" data-aos-anchor=".skills-section" style="width: {{ skill.level }}%;" aria-valuenow="{{ skill.level }}" aria-valuemin="0" aria-valuemax="100">
                                     {{ skill.proficiency }}
                                 </div>
                               </div>
@@ -248,7 +248,7 @@
                     {% for reference in references %}
                         <div class="col-md-6">
                           <div class="d-flex mb-2">
-                            <div class="avatar"><img src="{{ reference.image.url }}" width="60" height="60"/></div>
+                            <div class="avatar"><img src="{{ reference.image.url }}" width="60" height="60" alt="/"/></div>
                             <div class="header-bio m-3 mb-0">
                               <h3 class="h6 mb-1" data-aos="fade-left" data-aos-delay="0">{{ reference.name }}</h3>
                               <p class="text-muted text-small" data-aos="fade-left" data-aos-delay="100">{{ reference.designation }} / {{ reference.organization }}</p>
@@ -275,7 +275,7 @@
                             {{ personal_details.email }}</div>
                       </div>
                       <div class="mt-5 d-print-none">
-                          <form action='{% url 'contact' %}' method="POST">
+                          <form action='{% url 'contact' personal_details.slug %}' method="POST">
                                 {% csrf_token %}
                                   <div class="form-outline mb-4">
                                     <input type="text" id="name" class="form-control" name="name" required/>
