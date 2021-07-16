@@ -101,13 +101,12 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db',
-        'USER': 'db',
-        'PASSWORD': 'c3o8y5892hnceaji',
-        'HOST': 'app-048e68bc-080b-4d8a-8f13-60247ed216fd-do-user-6747397-0.b.db.ondigitalocean.com',
-        'PORT': '25060',
-    }
+          'ENGINE': 'djongo',
+          'NAME': 'db_new',
+          'CLIENT': {
+                'host': "mongodb+srv://doadmin:581P2typ047Ldmq3@test-django-26062983q-fc07696a.mongo.ondigitalocean.com/admin?authSource=admin&replicaSet=test-django-26062983q&tls=true&tlsCAFile=ca-certificate.crt"
+          },
+      }
 }
 
 CSRF_COOKIE_SECURE = True
