@@ -4,14 +4,13 @@ from django.shortcuts import render
 
 from .models import Skill, WorkExperience, Project, Reference, Education
 from .redirect_views import *
+from .forms import SkillForm
 
 
 # Create your views here.
 def calculate_age(birth_date):
     today = date.today()
-    age = today.year - birth_date.year - ((today.month, today.day) < (birth_date.month, birth_date.day))
-    print(age)
-    return age
+    return today.year - birth_date.year - ((today.month, today.day) < (birth_date.month, birth_date.day))
 
 
 def home_view(request, slug):
@@ -21,6 +20,7 @@ def home_view(request, slug):
     educations = Education.objects.filter(user=personal_details).all()
     projects = Project.objects.filter(user=personal_details).all()
     references = Reference.objects.filter(user=personal_details).all()
+    skill_form = SkillForm()
     return render(request, 'myportfolio/index.html', {
         'personal_details': personal_details,
         'age': calculate_age(personal_details.dob),
@@ -28,10 +28,9 @@ def home_view(request, slug):
         'workExperiences': work_experiences,
         'references': references,
         'projects': projects,
-        'educations': educations
+        'educations': educations,
+        'skill_form': skill_form
     })
-
-
 
 
 def contact(request, slug):
@@ -41,3 +40,14 @@ def contact(request, slug):
     # send_mail(f'Reached from Portfolio: {name}', msg, email, ['ritwikr@ieee.org'])
     return redirect('home', slug)
 
+
+def add_data(request, slug, field):
+    if field == 'skill':
+        user = PersonalDetail.objects.get(slug=slug)
+        form = SkillForm(request.POST)
+        skill = form.save(commit=False)
+        skill.user = user
+        skill.proficiency = "<Auto Enter>"
+        skill.save()
+
+    return redirect('home', slug)

@@ -1,0 +1,28 @@
+<div class="col-md-2">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{ field }}Modal">
+      ADD {{ field }}
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="{{ field }}Modal" tabindex="-1" aria-labelledby="s{{ field }}ModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form action='{% url 'add' slug=personal_details.slug field=field|lower %}' method="post">
+              {% csrf_token %}
+              <div class="modal-header">
+                <h5 class="modal-title" id="{{ field }}ModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                {{ form.as_p }}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Add {{ field }}</button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>

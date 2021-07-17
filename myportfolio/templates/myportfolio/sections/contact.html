@@ -1,0 +1,36 @@
+<div class="shadow-1-strong bg-white my-5 p-5" id="contact">
+                <div class="contact-section">
+                  <h2 class="h2 fw-light text mb-4">Contact</h2>
+                  <div class="row mb-4">
+                    <div class="col-md-5" data-aos="fade-left" data-aos-delay="200">
+                      <div class="mt-1">
+                        <div class="h6"><i class="fas fa-phone pe-2 text-muted" style="width:24px;opacity:0.85;"></i>
+                            {{ personal_details.phone }}</div>
+                        <div class="h6"><i class="far fa-envelope pe-2 text-muted" style="width:24px;opacity:0.85;"></i>
+                            {{ personal_details.email }}</div>
+                      </div>
+                      <div class="mt-5 d-print-none">
+                          <form action='{% url 'contact' personal_details.slug %}' method="POST">
+                                {% csrf_token %}
+                                  <div class="form-outline mb-4">
+                                    <input type="text" id="name" class="form-control" name="name" required/>
+                                    <label class="form-label" for="name">Name</label>
+                                  </div>
+                                  <div class="form-outline mb-4">
+                                    <input type="email" id="email" class="form-control" name="email" required/>
+                                    <label class="form-label" for="email">Email address</label>
+                                  </div>
+                                  <div class="form-outline mb-4">
+                                    <textarea class="form-control" style="resize: none;" id="message" name="msg" rows="4" required></textarea>
+                                    <label class="form-label" for="message">Message</label>
+                                  </div>
+                                  <button class="btn btn-info btn-block mb-4" type="submit">Send</button>
+                          </form>
+                      </div>
+                    </div>
+                    <div class="col-md-7 d-print-none" data-aos="zoom-in" data-aos-delay="100">
+                        {{ personal_details.maps|safe }}
+                    </div>
+                  </div>
+                </div>
+              </div>

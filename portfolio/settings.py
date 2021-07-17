@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from .config import *
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -46,9 +47,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'myportfolio/static'),
 ]
 
-AWS_ACCESS_KEY_ID = 'AKIAXZ6ACCEH2WC2HAPC'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'portfolio-ritwik'
 
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
@@ -104,7 +102,7 @@ DATABASES = {
           'ENGINE': 'djongo',
           'NAME': 'db_new',
           'CLIENT': {
-                'host': "mongodb+srv://doadmin:581P2typ047Ldmq3@test-django-26062983q-fc07696a.mongo.ondigitalocean.com/admin?authSource=admin&replicaSet=test-django-26062983q&tls=true&tlsCAFile=ca-certificate.crt"
+                'host': MONGODB_HOST
           },
       }
 }

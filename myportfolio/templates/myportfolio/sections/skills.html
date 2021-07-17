@@ -1,0 +1,24 @@
+<div class="shadow-1-strong bg-white my-5 p-5" id="skills">
+                <div class="skills-section">
+                <div class="row">
+                    <div class="col-md-10">
+                        <h2 class="h2 fw-light mb-4">Skills</h2>
+                    </div>
+                    {% include 'myportfolio/widgets/forms.html' with field="SKILL" form=skill_form  %}
+                </div>
+                    <div class="row">
+                      {% for skill in skills %}
+                          <div class="col-md-6">
+                          <div class="mb-3">
+                              <span class="fw-bolder">{{ skill.name }}</span>
+                              <div class="progress my-2 rounded" style="height: 20px">
+                                <div class="progress-bar bg-info" role="progressbar" data-aos="zoom-in-right" data-aos-delay="100" data-aos-anchor=".skills-section" style="width: {{ skill.level }}%;" aria-valuenow="{{ skill.level }}" aria-valuemin="0" aria-valuemax="100">
+                                    {{ skill.proficiency }}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      {% endfor %}
+                    </div>
+                </div>
+              </div>

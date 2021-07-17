@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" media="print" onload="this.media='all'"/>
     <noscript>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Roboto:wght@300;400;500;700&amp;display=swap"/>
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </noscript>
 
       {% load static %}
@@ -32,303 +34,31 @@
 
   <body class="bg-light" id="top">
 
-    <header class="d-print-none">
-      <div class="container text-center text-lg-left">
-        <div class="pt-4 clearfix">
-          <h1 class="site-title mb-0">{{ name }}</h1>
-          <div class="site-nav"> 
-            <nav role="navigation">
-              <ul class="nav justify-content-center">
-                <li class="nav-item"><a class="nav-link" href="#about" title="About"><span class="menu-title">About</span></a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="#skills" title="Skills"><span class="menu-title">Skills</span></a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="#experience" title="Experience"><span class="menu-title">Experience</span></a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="#education" title="Education"><span class="menu-title">Education</span></a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="#portfolio" title="Portfolio"><span class="menu-title">Portfolio</span></a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="#references" title="References"><span class="menu-title">References</span></a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="#contact" title="Contact"><span class="menu-title">Contact</span></a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </header>
+    {% include 'myportfolio/sections/header.html' %}
 
     <div class="page-content">
         <div class="container">
             <div class="resume-container">
 
-              <div class="shadow-1-strong bg-white my-5" id="intro">
-                <div class="bg-info text-white">
-                  <div class="cover bg-image"><img src="{{ personal_details.cover_image.url }}" alt=""/>
-                    <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);backdrop-filter: blur(2px);">
-                      <div class="text-center p-5">
-                        <div class="avatar p-1"><img class="img-thumbnail shadow-2-strong" src="{{ personal_details.profile_image.url }}" width="160" height="160" alt=""/></div>
-                        <div class="header-bio mt-3">
-                          <div data-aos="zoom-in" data-aos-delay="0">
-                            <h2 class="h1">{{ personal_details.name }}</h2>
-                            <p>{{ personal_details.designation }}</p>
-                          </div>
-                          <div class="header-social mb-3 d-print-none" data-aos="zoom-in" data-aos-delay="200">
-                            <nav role="navigation">
-                              <ul class="nav justify-content-center social-media">
-                                <li class="nav-item"><a class="nav-link" href={{ 'twitter' }}><i class="fab fa-twitter"></i><span class="menu-title sr-only">Twitter</span></a>
-                                </li>
-                                <li class="nav-item"><a class="nav-link" href={{ 'linkedin' }}><i class="fab fa-linkedin"></i><span class="menu-title sr-only">Twitter</span></a>
-                                </li>
-                                <li class="nav-item"><a class="nav-link" href={{ 'fb' }}><i class="fab fa-facebook"></i><span class="menu-title sr-only">Facebook</span></a>
-                                </li>
-                                <li class="nav-item"><a class="nav-link" href={{ 'insta' }}><i class="fab fa-instagram"></i><span class="menu-title sr-only">Instagram</span></a>
-                                </li>
-                                <li class="nav-item"><a class="nav-link" href={{ 'github' }}><i class="fab fa-github"></i><span class="menu-title sr-only">Github</span></a>
-                                </li>
-                              </ul>
-                            </nav>
-                          </div>
-                          <div class="d-print-none"><a class="btn btn-outline-light btn-lg shadow-sm mt-1 me-3" href="{{ personal_details.resume.url }}" data-aos="fade-right" data-aos-delay="200">Download CV</a><a class="btn btn-info btn-lg shadow-sm mt-1" href="#contact" data-aos="fade-left" data-aos-delay="700">Hire Me</a></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                {% include 'myportfolio/sections/intro.html' %}
+                {% include 'myportfolio/sections/about.html' %}
+                {% include 'myportfolio/sections/skills.html' %}
+                {% include 'myportfolio/sections/experiences.html' %}
+                {% include 'myportfolio/sections/project.html' %}
+                {% include 'myportfolio/sections/reference.html' %}
+                {% include 'myportfolio/sections/contact.html' %}
 
-              <div class="shadow-1-strong bg-white my-5 p-5" id="about">
-                  <div class="about-section">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <h2 class="h2 fw-light mb-4">About Me</h2>
-                        {{ personal_details.bio|safe }}
-                    </div>
-                    <div class="col-md-5 offset-lg-1">
-                      <div class="row mt-2">
-                        <h2 class="h2 fw-light mb-4">Bio</h2>
-                        <div class="col-sm-5">
-                          <div class="pb-2 fw-bolder"><i class="far fa-calendar-alt pe-2 text-muted" style="width:24px;opacity:0.85;"></i> Age</div>
-                        </div>
-                        <div class="col-sm-7">
-                          <div class="pb-2">{{ age }}</div>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="pb-2 fw-bolder"><i class="far fa-envelope pe-2 text-muted" style="width:24px;opacity:0.85;"></i> Email</div>
-                        </div>
-                        <div class="col-sm-7">
-                          <div class="pb-2"><a href="mailto:{{ personal_details.email }}">{{ personal_details.email }}</a></div>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="pb-2 fw-bolder"><i class="fab fa-skype pe-2 text-muted" style="width:24px;opacity:0.85;"></i> LinkedIn</div>
-                        </div>
-                        <div class="col-sm-7">
-                          <div class="pb-2"><a href={{ 'linkedin' }}>{{ personal_details.linkedin }}</a></div>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="pb-2 fw-bolder"><i class="fab fa-skype pe-2 text-muted" style="width:24px;opacity:0.85;"></i> Github</div>
-                        </div>
-                        <div class="col-sm-7">
-                          <div class="pb-2"><a href={{ 'github' }}>{{ personal_details.github }}</a></div>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="pb-2 fw-bolder"><i class="fas fa-phone pe-2 text-muted" style="width:24px;opacity:0.85;"></i> Phone</div>
-                        </div>
-                        <div class="col-sm-7">
-                          <div class="pb-2">{{ personal_details.phone }}</div>
-                        </div>
-                        <div class="col-sm-5">
-                          <div class="pb-2 fw-bolder"><i class="fas fa-map-marker-alt pe-2 text-muted" style="width:24px;opacity:0.85;"></i> Address</div>
-                        </div>
-                        <div class="col-sm-7">
-                          <div class="pb-2">{{ personal_details.address }}</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="shadow-1-strong bg-white my-5 p-5" id="skills">
-                <div class="skills-section">
-                  <h2 class="h2 fw-light mb-4">Skills</h2>
-                    <div class="row">
-                      {% for skill in skills %}
-                          <div class="col-md-6">
-                          <div class="mb-3">
-                              <span class="fw-bolder">{{ skill.name }}</span>
-                              <div class="progress my-2 rounded" style="height: 20px">
-                                <div class="progress-bar bg-info" role="progressbar" data-aos="zoom-in-right" data-aos-delay="100" data-aos-anchor=".skills-section" style="width: {{ skill.level }}%;" aria-valuenow="{{ skill.level }}" aria-valuemin="0" aria-valuemax="100">
-                                    {{ skill.proficiency }}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                      {% endfor %}
-                    </div>
-                </div>
-              </div>
-
-              <div class="shadow-1-strong bg-white my-5 p-5" id="experience">
-                <div class="work-experience-section">
-                  <h2 class="h2 fw-light mb-4">Work Experience</h2>
-                  <div class="timeline">
-                      {% for workEx in workExperiences %}
-                        <div class="timeline-card timeline-card-info" data-aos="fade-in" data-aos-delay="0">
-                          <div class="timeline-head px-4 pt-3">
-                            <div class="h5">{{ workEx.designation }} <span class="text-muted h6">at {{ workEx.company }}</span></div>
-                          </div>
-                          <div class="timeline-body px-4 pb-4">
-                            <div class="text-muted text-small mb-3">{{ workEx.start_date }} - {% if workEx.current %}Present{% else %}{{ workEx.end_date }}{% endif %}</div>
-                            <div>{{ workEx.description|safe }}</div>
-                          </div>
-                        </div>
-                      {% endfor %}
-                  </div>
-                </div>
-              </div>
-
-              <div class="shadow-1-strong bg-white my-5 p-5" id="education">
-                <div class="education-section">
-                  <h2 class="h2 fw-light mb-4">Education</h2>
-                  <div class="timeline">
-                      {% for education in educations %}
-                        <div class="timeline-card timeline-card-success" data-aos="fade-in" data-aos-delay="0">
-                          <div class="timeline-head px-4 pt-3">
-                            <div class="h5">{{ education.title }} <span class="text-muted h6">from {{ education.alma_mater }}</span></div>
-                          </div>
-                          <div class="timeline-body px-4 pb-4">
-                            <div class="text-muted text-small mb-3">{{ education.start_year }} - {{ education.end_year }}</div>
-                            <div>{{ education.description }}</div>
-                          </div>
-                        </div>
-                      {% endfor %}
-                  </div>
-                </div>
-              </div>
-
-              <div class="shadow-1-strong bg-white my-5 p-5 d-print-none" id="portfolio">
-                <div class="portfolio-section">
-                  <h2 class="h2 fw-light mb-4">Portfolio</h2>
-                    {% for project in projects %}
-                        {% if project.left %}
-                          <div class="row g-0">
-                            <div class="col-md-6"><a href={{ project.link }} ><img class="img-fluid" src={{ project.image.url }} width="800" height="500"/></a></div>
-                            <div class="col-md-6 d-flex align-items-center" data-aos="fade-left"  data-aos-delay="100">
-                              <div class="m-4 mt-md-2">
-                                <p class="text-teal text-small">{{ project.tech_stack }}</p>
-                                    <h3>{{ project.title }}</h3>
-                                <p class="text-muted">{{ project.description|safe }}</p>
-                              </div>
-                            </div>
-                          </div>
-                        {% else %}
-                            <div class="row g-0 portfolio-reverse">
-                                <div class="col-md-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
-                                  <div class="m-4 mt-md-2 text-end">
-                                    <p class="text-teal text-small">{{ project.tech_stack }}</p>
-                                        <h3>{{ project.title }}</h3>
-                                    <p class="text-muted">{{ project.description|safe }}</p>
-                                  </div>
-                                </div>
-                                <div class="col-md-6"><a href="{{ project.url }}"><img class="img-fluid" src="{{ project.image.url }}" width="800" height="500"/></a></div>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                </div>
-              </div>
-
-              <div class="shadow-1-strong bg-white my-5 p-5" id="references">
-                <div class="reference-section">
-                  <h2 class="h2 fw-light mb-4">References</h2>
-                <div class="row">
-
-                    {% for reference in references %}
-                        <div class="col-md-6">
-                          <div class="d-flex mb-2">
-                            <div class="avatar"><img src="{{ reference.image.url }}" width="60" height="60" alt="/"/></div>
-                            <div class="header-bio m-3 mb-0">
-                              <h3 class="h6 mb-1" data-aos="fade-left" data-aos-delay="0">{{ reference.name }}</h3>
-                              <p class="text-muted text-small" data-aos="fade-left" data-aos-delay="100">{{ reference.designation }} / {{ reference.organization }}</p>
-                            </div>
-                          </div>
-                          <div class="d-flex"><i class="text-secondary fas fa-quote-left"></i>
-                            <p class="lead mx-2" data-aos="fade-left" data-aos-delay="100">{{ reference.comment }}</p>
-                          </div>
-                    </div>
-                    {% endfor %}
-                </div>
-                  </div>
-                </div>
-
-              <div class="shadow-1-strong bg-white my-5 p-5" id="contact">
-                <div class="contact-section">
-                  <h2 class="h2 fw-light text mb-4">Contact</h2>
-                  <div class="row mb-4">
-                    <div class="col-md-5" data-aos="fade-left" data-aos-delay="200">
-                      <div class="mt-1">
-                        <div class="h6"><i class="fas fa-phone pe-2 text-muted" style="width:24px;opacity:0.85;"></i>
-                            {{ personal_details.phone }}</div>
-                        <div class="h6"><i class="far fa-envelope pe-2 text-muted" style="width:24px;opacity:0.85;"></i>
-                            {{ personal_details.email }}</div>
-                      </div>
-                      <div class="mt-5 d-print-none">
-                          <form action='{% url 'contact' personal_details.slug %}' method="POST">
-                                {% csrf_token %}
-                                  <div class="form-outline mb-4">
-                                    <input type="text" id="name" class="form-control" name="name" required/>
-                                    <label class="form-label" for="name">Name</label>
-                                  </div>
-                                  <div class="form-outline mb-4">
-                                    <input type="email" id="email" class="form-control" name="email" required/>
-                                    <label class="form-label" for="email">Email address</label>
-                                  </div>
-                                  <div class="form-outline mb-4">
-                                    <textarea class="form-control" style="resize: none;" id="message" name="msg" rows="4" required></textarea>
-                                    <label class="form-label" for="message">Message</label>
-                                  </div>
-                                  <button class="btn btn-info btn-block mb-4" type="submit">Send</button>
-                          </form>
-                      </div>
-                    </div>
-                    <div class="col-md-7 d-print-none" data-aos="zoom-in" data-aos-delay="100">
-                        {{ personal_details.maps|safe }}
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
         </div>
     </div>
 
-    <footer class="pt-4 pb-4 text-muted text-center d-print-none">
-      <div class="container">
-        <div class="my-3">
-          <div class="h4">{{ name }}</div>
-          <div class="footer-nav">
-            <nav role="navigation">
-              <ul class="nav justify-content-center">
-                <li class="nav-item"><a class="nav-link" href={{ 'twitter' }}> <i class="fab fa-twitter"></i><span class="menu-title sr-only">Twitter</span></a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href={{ "fb" }}> <i class="fab fa-facebook"></i><span class="menu-title sr-only">Facebook</span></a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href={{ "insta" }}> <i class="fab fa-instagram"></i><span class="menu-title sr-only">Instagram</span></a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href={{ 'github' }}> <i class="fab fa-github"></i><span class="menu-title sr-only">Github</span></a>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-
-      </div>
-    </footer>
+    {% include 'myportfolio/sections/footer.html' %}
 
     <script src="{% static 'myportfolio/scripts/mdb.min.js' %}"></script>
     <script src="{% static 'myportfolio/scripts/aos.js' %}"></script>
     <script src="{% static 'myportfolio/scripts/main.js' %}"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   </body>
 
 </html>

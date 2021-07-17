@@ -1,0 +1,34 @@
+<div class="shadow-1-strong bg-white my-5" id="intro">
+  <div class="bg-info text-white">
+  <div class="cover bg-image"><img src="{{ personal_details.cover_image.url }}" alt=""/>
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);backdrop-filter: blur(2px);">
+      <div class="text-center p-5">
+        <div class="avatar p-1"><img class="img-thumbnail shadow-2-strong" src="{{ personal_details.profile_image.url }}" width="160" height="160" alt=""/></div>
+        <div class="header-bio mt-3">
+          <div data-aos="zoom-in" data-aos-delay="0">
+            <h2 class="h1">{{ personal_details.name }}</h2>
+            <p>{{ personal_details.designation }}</p>
+          </div>
+          <div class="header-social mb-3 d-print-none" data-aos="zoom-in" data-aos-delay="200">
+            <nav role="navigation">
+              <ul class="nav justify-content-center social-media">
+                <li class="nav-item"><a class="nav-link" href={% url 'twitter' personal_details.slug %}><i class="fab fa-twitter"></i><span class="menu-title sr-only">Twitter</span></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href={% url 'linkedin' personal_details.slug %}><i class="fab fa-linkedin"></i><span class="menu-title sr-only">Twitter</span></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href={% url 'fb' personal_details.slug %}><i class="fab fa-facebook"></i><span class="menu-title sr-only">Facebook</span></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href={% url 'insta' personal_details.slug %}><i class="fab fa-instagram"></i><span class="menu-title sr-only">Instagram</span></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href={% url 'github' personal_details.slug %}><i class="fab fa-github"></i><span class="menu-title sr-only">Github</span></a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="d-print-none"><a class="btn btn-outline-light btn-lg shadow-sm mt-1 me-3" href="{{ personal_details.resume.url }}" data-aos="fade-right" data-aos-delay="200">Download CV</a><a class="btn btn-info btn-lg shadow-sm mt-1" href="#contact" data-aos="fade-left" data-aos-delay="700">Hire Me</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
