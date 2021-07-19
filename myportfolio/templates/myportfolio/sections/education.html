@@ -1,6 +1,12 @@
 <div class="shadow-1-strong bg-white my-5 p-5" id="education">
   <div class="education-section">
-  <h2 class="h2 fw-light mb-4">Education</h2>
+    {% if edit %}
+        {% include 'myportfolio/widgets/forms.html' with field="EDUCATION" form=education_form  %}
+    {% else %}
+        <h2 class="h2 fw-light mb-4">Education</h2>
+    {% endif %}
+
+
   <div class="timeline">
       {% for education in educations %}
         <div class="timeline-card timeline-card-success" data-aos="fade-in" data-aos-delay="0">
@@ -12,6 +18,9 @@
             <div>{{ education.description }}</div>
           </div>
         </div>
+          {% if edit %}
+              {% include 'myportfolio/widgets/delete_forms.html' with field="EDUCATION" pk=education.pk  %}
+          {% endif %}
       {% endfor %}
   </div>
 </div>

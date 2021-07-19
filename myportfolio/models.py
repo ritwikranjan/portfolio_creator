@@ -4,26 +4,31 @@ from django.contrib.auth.models import User
 
 class PersonalDetail(models.Model):
     id = models.IntegerField(primary_key=True, auto_created=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField()
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     name = models.CharField(max_length=200)
     email = models.EmailField()
+    bio = models.TextField(null=True)
     phone = models.CharField(max_length=15)
-    github = models.URLField()
-    linkedin = models.URLField()
-    fb = models.URLField()
-    insta = models.URLField()
-    twitter = models.URLField()
+    github = models.URLField(null=True)
+    linkedin = models.URLField(null=True)
+    fb = models.URLField(null=True)
+    insta = models.URLField(null=True)
+    twitter = models.URLField(null=True)
     dob = models.DateField()
     profile_image = models.ImageField()
     cover_image = models.ImageField()
     address = models.TextField(max_length=200)
     resume = models.FileField()
-    maps = models.TextField()
+    maps = models.TextField(help_text="Enter Iframe of Google Maps")
     slug = models.SlugField()
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        self.email = self.user.email
+        self.slug = self.user.username
+        super(PersonalDetail, self).save(*args, **kwargs)
 
 
 class Skill(models.Model):

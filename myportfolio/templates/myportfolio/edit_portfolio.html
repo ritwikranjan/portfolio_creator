@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
+    <title>Material Resume</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin"/>
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Roboto:wght@300;400;500;700&amp;display=swap"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" media="print" onload="this.media='all'"/>
     <noscript>
@@ -22,7 +23,7 @@
     <link href="{% static 'myportfolio/css/aos.css' %}" rel="stylesheet">
     <link href="{% static 'myportfolio/css/main.css' %}" rel="stylesheet">
     <noscript>
-      <style>
+      <style type="text/css">
         [data-aos] {
             opacity: 1 !important;
             transform: translate(0) scale(1) !important;
@@ -39,14 +40,14 @@
         <div class="container">
             <div class="resume-container">
 
-                {% include 'myportfolio/sections/intro.html' %}
-                {% include 'myportfolio/sections/about.html'  %}
-                {% include 'myportfolio/sections/skills.html'  %}
-                {% include 'myportfolio/sections/experiences.html'  %}
-                {% include 'myportfolio/sections/education.html'  %}
-                {% include 'myportfolio/sections/project.html'  %}
+                {% include 'myportfolio/sections/intro.html'    %}
+                {% include 'myportfolio/sections/about.html'   %}
+                {% include 'myportfolio/sections/skills.html'   %}
+                {% include 'myportfolio/sections/experiences.html'   %}
+                {% include 'myportfolio/sections/education.html'   %}
+                {% include 'myportfolio/sections/project.html'   %}
                 {% include 'myportfolio/sections/reference.html'  %}
-                {% include 'myportfolio/sections/contact.html'  %}
+                {% include 'myportfolio/sections/contact.html'   %}
 
             </div>
         </div>

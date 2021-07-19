@@ -19,6 +19,10 @@
                 </li>
                 <li class="nav-item"><a class="nav-link" href="#contact" title="Contact"><span class="menu-title">Contact</span></a>
                 </li>
+                {% if not edit %}<li class="nav-item"><a class="nav-link" href={% url 'edit' personal_details.slug %}><span class="menu-title">Edit</span></a>
+                </li>{% endif %}
+                {% if user.is_authenticated %}<li class="nav-item"><a class="nav-link" href={% url 'logout' %}><span class="menu-title">Logout</span></a>
+                </li>{% endif %}
               </ul>
             </nav>
           </div>

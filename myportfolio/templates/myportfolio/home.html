@@ -1,0 +1,11 @@
+{% extends 'myportfolio/base.html' %}
+
+{% block content %}
+
+    <div class="btn-group-vertical" role="group" style="align-items: center; align-self: center; alignment: center">
+    <h1 style="padding: 40px">Welcome to Portfolio Builder</h1>
+        <a href={% url 'login' %}> <button type="button" class="btn btn-outline-primary btn-lg">Sign In</button></a>
+        <a href={% url 'sign_up' %}> <button type="button" class="btn btn-secondary btn-lg">Sign Up</button></a>
+    </div>
+
+{% endblock %}

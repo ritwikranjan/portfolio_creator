@@ -1,24 +1,30 @@
+<div class="shadow-1-strong bg-white my-5 p-5" id="references">
+    <div class="reference-section">
+    {% if edit %}
+        {% include 'myportfolio/widgets/forms.html' with field="REFERENCE" form=reference_form  %}
+    {% else %}
+        <h2 class="h2 fw-light mb-4">References</h2>
+    {% endif %}
+    <div class="row">
 
-              <div class="shadow-1-strong bg-white my-5 p-5" id="references">
-                <div class="reference-section">
-                  <h2 class="h2 fw-light mb-4">References</h2>
-                <div class="row">
-
-                    {% for reference in references %}
-                        <div class="col-md-6">
-                          <div class="d-flex mb-2">
-                            <div class="avatar"><img src="{{ reference.image.url }}" width="60" height="60" alt="/"/></div>
-                            <div class="header-bio m-3 mb-0">
-                              <h3 class="h6 mb-1" data-aos="fade-left" data-aos-delay="0">{{ reference.name }}</h3>
-                              <p class="text-muted text-small" data-aos="fade-left" data-aos-delay="100">{{ reference.designation }} / {{ reference.organization }}</p>
-                            </div>
-                          </div>
-                          <div class="d-flex"><i class="text-secondary fas fa-quote-left"></i>
-                            <p class="lead mx-2" data-aos="fade-left" data-aos-delay="100">{{ reference.comment }}</p>
-                          </div>
-                    </div>
-                    {% endfor %}
+        {% for reference in references %}
+            <div class="col-md-6">
+              <div class="d-flex mb-2">
+                <div class="avatar"><img src="{{ reference.image.url }}" width="60" height="60" alt="/"/></div>
+                <div class="header-bio m-3 mb-0">
+                  <h3 class="h6 mb-1" data-aos="fade-left" data-aos-delay="0">{{ reference.name }}</h3>
+                  <p class="text-muted text-small" data-aos="fade-left" data-aos-delay="100">{{ reference.designation }} / {{ reference.organization }}</p>
                 </div>
-                  </div>
-                </div>
+              </div>
+              <div class="d-flex"><i class="text-secondary fas fa-quote-left"></i>
+                <p class="lead mx-2" data-aos="fade-left" data-aos-delay="100">{{ reference.comment }}</p>
+              </div>
+        </div>
+            {% if edit %}
+              {% include 'myportfolio/widgets/delete_forms.html' with field="REFERENCE" pk=reference.pk  %}
+          {% endif %}
+        {% endfor %}
+    </div>
+      </div>
+</div>
 
