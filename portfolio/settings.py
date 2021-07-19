@@ -21,11 +21,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-d=l#kty3+&)0*&q_gj@dakfh*1^fr8+4td@*ao(vj=)0u552(z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -102,7 +100,7 @@ DATABASES = {
           'ENGINE': 'djongo',
           'NAME': 'db_new',
           'CLIENT': {
-                'host': MONGODB_HOST
+                'host': os.environ.get('MongoDB_ConnectionString')
           },
       }
 }
