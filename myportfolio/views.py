@@ -127,6 +127,7 @@ def create_portfolio(request):
             user = User.objects.create_user(username, email, password)
             login(request, user)
             profile = profile_form.save(commit=False)
+            profile.id = user.pk
             profile.user = user
             profile.save()
             return redirect('home', username)
