@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-from .config import *
+# from .config import *
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -107,7 +107,7 @@ DATABASES = {
           'ENGINE': 'djongo',
           'NAME': 'db_new',
           'CLIENT': {
-                'host': os.environ.get('MongoDB_ConnectionString')
+                'host': os.environ.get('MONGODB_URL')
           },
       }
 }
