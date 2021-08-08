@@ -1,6 +1,7 @@
 from datetime import date
 
 from django.contrib.auth import login
+from django.http import HttpResponseForbidden
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -63,6 +64,8 @@ def edit_view(request, slug):
             'project_form': project_form,
             'reference_form': reference_form
         })
+    else:
+        return HttpResponseForbidden(request)
 
 
 def contact(request, slug):
@@ -76,7 +79,7 @@ def contact(request, slug):
 @login_required
 def add_data(request, slug, field):
     user = PersonalDetail.objects.get(slug=slug)
-    if request.user == user:
+    if request.user == user.user:
         if field == 'skill':
             form = SkillForm(request.POST)
             if form.is_valid():
@@ -84,6 +87,7 @@ def add_data(request, slug, field):
                 skill.user = user
                 skill.proficiency = "<Auto Enter>"
                 skill.save()
+                print(skill)
         elif field == 'education':
             form = EducationForm(request.POST)
             if form.is_valid():
