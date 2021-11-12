@@ -104,9 +104,10 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 DATABASES = {
     'default': {
           'ENGINE': 'djongo',
-          'NAME': 'db_new',
           'CLIENT': {
-                'host': os.environ.get('MONGODB_URL')
+                'host': os.environ.get('MONGODB_URL'),
+
+
           },
       }
 }
