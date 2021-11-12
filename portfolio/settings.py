@@ -106,8 +106,6 @@ DATABASES = {
           'ENGINE': 'djongo',
           'CLIENT': {
                 'host': os.environ.get('MONGODB_URL'),
-
-
           },
       }
 }
